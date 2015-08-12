@@ -83,6 +83,18 @@ module Bullhorn
         res.body.blank? ? "" : Hashie::Mash.new(JSON.parse(res.body))
       end
 
+      def get_candidate_files(candidate_id)
+        path = "entityFiles/Candidate/#{candidate_id}"
+        res = conn.get path
+        Hashie::Mash.new JSON.parse(res.body)
+      end
+
+      def get_file(candidate_id, file_id)
+        path = "file/Candidate/#{candidate_id}/#{file_id}"
+        res = conn.get path
+        Hashie::Mash.new JSON.parse(res.body)
+      end
+
       def upload_cv(candidate_id, attributes={})
         path = "file/Candidate/#{candidate_id}"
         res = conn.put path, attributes.to_json
