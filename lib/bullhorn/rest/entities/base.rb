@@ -125,6 +125,13 @@ module Bullhorn
               res = conn.delete path
               Hashie::Mash.new JSON.parse(res.body)
             end
+
+            define_method("soft_delete_#{entity}") do |id|
+              path = "entity/#{name}/#{id}?isDeleted=true"
+              res = conn.delete path
+              Hashie::Mash.new JSON.parse(res.body)
+            end
+
           end
 
           if options[:file_methods]
