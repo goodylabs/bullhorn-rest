@@ -12,7 +12,7 @@ module Authentication
   end
 
   def authorize
-    url = "https://auth.bullhornstaffing.com/oauth/authorize"
+    url = "https://auth-emea.bullhornstaffing.com/oauth/authorize"
     params = {
       client_id: client_id,
       username: username,
