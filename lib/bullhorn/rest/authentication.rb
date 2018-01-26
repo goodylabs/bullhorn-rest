@@ -26,7 +26,7 @@ module Authentication
   end
 
   def retrieve_tokens
-    url = "https://auth.bullhornstaffing.com/oauth/token"
+    url = "https://auth-emea.bullhornstaffing.com/oauth/token"
     params = {
       grant_type: 'authorization_code',
       code: auth_code,
@@ -42,7 +42,7 @@ module Authentication
   end
 
   def refresh_tokens
-    url = "https://auth.bullhornstaffing.com/oauth/token"
+    url = "https://auth-emea.bullhornstaffing.com/oauth/token"
     params = {
       grant_type: 'refresh_token',
       refresh_token: refresh_token,
@@ -58,7 +58,7 @@ module Authentication
   end
 
   def login
-    url = "https://rest.bullhornstaffing.com/rest-services/login"
+    url = "https://rest-emea.bullhornstaffing.com/rest-services/login"
     params = {
       version: '*',
       access_token: access_token
