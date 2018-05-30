@@ -108,8 +108,14 @@ module Bullhorn
 
           unless options[:immutable]
 
-            define_method("create_#{entity}") do |attributes = {}|
+            define_method("create_#{entity}") do |attributes = {}, options={}|
               path = "entity/#{name}"
+              if assoc = options.delete(:association)
+                path += "/#{assoc}"
+              end
+              if ids = options.delete(:association_ids)
+                path += "/#{ids.to_s}"
+              end
               res = conn.put path, attributes
               Hashie::Mash.new JSON.parse(res.body)
             end
