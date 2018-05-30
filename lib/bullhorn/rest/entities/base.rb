@@ -113,7 +113,7 @@ module Bullhorn
               Hashie::Mash.new JSON.parse(res.body)
             end
 
-            define_method("update_#{entity}") do |id, attributes={}, options= {} |
+            define_method("update_#{entity}") do |id, attributes={}, options= {}|
               path = "entity/#{name}/#{id}"
               if assoc = options.delete(:association)
                 path += "/#{assoc}"
